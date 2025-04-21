@@ -1,0 +1,60 @@
+.signin {
+  width: 384px;
+  min-height: 374px;
+  margin-top: 139px;
+  margin-left: 523px;
+  border-radius: 6px;
+  border-width: 1px;
+  padding-top: 48px;
+  padding-right: 32px;
+  padding-bottom: 48px;
+  padding-left: 32px;
+  gap: 21px;
+  background-color: white;
+  transition: min-height 0.5s ease;
+}
+
+.signForm {
+  display: flex;
+  flex-direction: column;
+}
+.signForm h2,
+p {
+  text-align: center;
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: 0%;
+  text-align: center;
+}
+.signForm input {
+  padding-top: 12px;
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  height: 40px;
+}
+.signForm label {
+  margin-top: 12px;
+}
+.signForm button {
+  margin-top: 21px;
+  height: 40px;
+  color: white;
+  background-color: rgba(24, 144, 255, 1);
+  border: none;
+}
+
+p {
+  color: gray;
+}
+.sign {
+  color: rgba(24, 144, 255, 1);
+}
+.error {
+  height: 28px;
+}

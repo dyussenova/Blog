@@ -1,0 +1,43 @@
+.editprof {
+  width: 384px;
+  min-height: 498px;
+  margin-top: 139px;
+  margin-left: 523px;
+  border-radius: 6px;
+  border-width: 1px;
+  padding-top: 48px;
+  padding-right: 32px;
+  padding-bottom: 48px;
+  padding-left: 32px;
+  gap: 21px;
+  background-color: white;
+}
+.editform {
+  display: flex;
+  flex-direction: column;
+}
+
+.editform h2 {
+  text-align: center;
+}
+.editform input {
+  padding-top: 12px;
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  height: 40px;
+}
+.editform label {
+  margin-top: 12px;
+}
+
+.editform button {
+  margin-top: 21px;
+  height: 40px;
+  color: white;
+  background-color: rgba(24, 144, 255, 1);
+  border: none;
+}

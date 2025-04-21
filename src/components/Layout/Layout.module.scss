@@ -1,0 +1,94 @@
+.header {
+  background: rgba(255, 255, 255, 1);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__conteiner {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+}
+
+.title {
+  font-family: Inter;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: 0%;
+
+  &__header {
+    color: black;
+  }
+}
+.sign {
+  display: flex;
+  align-items: center;
+
+  &__signin {
+    background: none;
+    color: black;
+    margin: 0 10px;
+
+    &:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+
+  &__signup {
+    border-radius: 5px;
+    color: rgba(82, 196, 26, 1);
+    border: rgba(82, 196, 26, 1) 1px solid;
+    padding: 0.5rem 1rem;
+    margin: 0 10px;
+
+    &:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+}
+.userProfile {
+  display: flex;
+  text-align: center;
+}
+
+.username {
+  margin-right: 15px;
+  position: relative;
+  top: -17px;
+}
+
+.logoutButton {
+  margin-left: 27px;
+  width: 109px;
+  height: 51px;
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid grey;
+}
+
+.createArticle {
+  width: 112px;
+  height: 31px;
+  border-radius: 5px;
+  border: 1px solid rgba(82, 196, 26, 1);
+  color: rgba(82, 196, 26, 1);
+  background-color: white;
+  margin-right: 26px;
+  margin-top: 10px;
+  padding-top: 5px;
+}
+.edit {
+  color: black;
+}
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
