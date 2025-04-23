@@ -45,7 +45,7 @@ function Layout() {
                     src={currentUser.image || defaultAvatar}
                     alt="User Avatar"
                     className={classes.avatar}
-                    onError={(e) => e.target.src = defaultAvatar} 
+                    onError={(e) => (e.target.src = defaultAvatar)}
                   />
                 </NavLink>
                 <button onClick={handleLogout} className={classes.logoutButton}>

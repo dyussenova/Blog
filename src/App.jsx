@@ -6,6 +6,7 @@ import Article from './components/Article';
 import CreateArticle from './components/CreateArticle';
 import Error from './error/error';
 import Spinner from './spinner/spinner';
+import PrivateRoute from './components/Private';
 import { useSelector } from 'react-redux';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import EditProfile from './components/EditProfile/EditProfile';
@@ -23,7 +24,15 @@ function App() {
           <Route path="signin" element={<SignIn />} />
           <Route path="signup" element={<SignUp />} />
           <Route path="editprof" element={<EditProfile />} />
-          <Route path="createart" element={<CreateArticle />} />
+          <Route
+            path="createart"
+            element={
+              <PrivateRoute>
+                {' '}
+                <CreateArticle />
+              </PrivateRoute>
+            }
+          />
           <Route path="edit/:slug" element={<CreateArticle />} />
           <Route path="/Blog" element={<Navigate to="/" replace />} />
         </Route>

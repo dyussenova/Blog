@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { loginUser } from '../../store/loginSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
@@ -7,7 +7,7 @@ import classes from './SignIn.module.scss';
 
 function SignIn() {
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const {
     register,
     formState: { errors },
@@ -24,8 +24,9 @@ function SignIn() {
   useEffect(() => {
     if (status === 'succeeded') {
       reset();
+      navigate('/');
     }
-  }, [status, reset]);
+  }, [status, reset, navigate]);
 
   return (
     <div className={classes.signin}>
@@ -44,15 +45,13 @@ function SignIn() {
             },
           })}
           style={{
-            borderColor: errors?.emailAddress || error?.email ? 'red' : '',
-            borderWidth: errors?.emailAddress || error?.email ? '1px' : '',
+            borderColor: errors?.email || error?.email ? 'red' : '',
+            borderWidth: errors?.email || error?.email ? '1px' : '',
           }}
         />
         <div className={classes.error}>
-          {errors?.emailAddress && (
-            <p style={{ color: 'red' }}>
-              {errors?.emailAddress.message || 'Error'}
-            </p>
+          {errors?.email && (
+            <p style={{ color: 'red' }}>{errors?.email.message || 'Error'}</p>
           )}
           {error?.email && <p style={{ color: 'red' }}>{error?.email}</p>}
         </div>

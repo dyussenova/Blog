@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { registerUser } from '../../store/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
@@ -7,6 +7,7 @@ import classes from './SignUp.module.scss';
 
 function SignUp() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const {
     register,
     formState: { errors },
@@ -26,8 +27,9 @@ function SignUp() {
   useEffect(() => {
     if (status === 'succeeded') {
       reset();
+      navigate('/');
     }
-  }, [status, reset]);
+  }, [status, reset, navigate]);
 
   return (
     <div className={classes.signup}>
@@ -104,6 +106,10 @@ function SignUp() {
               message: 'Maximum number of characters is 40',
             },
           })}
+          style={{
+            borderColor: errors?.password || error?.password ? 'red' : '',
+            borderWidth: errors?.password || error?.password ? '1px' : '',
+          }}
         />
         <div className={classes.error}>
           {errors?.password && (
@@ -133,6 +139,12 @@ function SignUp() {
                 value === password || 'Passwords do not match',
             },
           })}
+          style={{
+            borderColor:
+              errors?.repeatPassword || error?.repeatPassword ? 'red' : '',
+            borderWidth:
+              errors?.repeatPassword || error?.repeatPassword ? '1px' : '',
+          }}
         />
         <div className={classes.error}>
           {errors?.repeatPassword && (
