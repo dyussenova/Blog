@@ -7,7 +7,7 @@ import CreateArticle from './components/CreateArticle';
 import Error from './error/error';
 import Spinner from './spinner/spinner';
 import { useSelector } from 'react-redux';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import EditProfile from './components/EditProfile/EditProfile';
 
 function App() {
@@ -25,6 +25,7 @@ function App() {
           <Route path="editprof" element={<EditProfile />} />
           <Route path="createart" element={<CreateArticle />} />
           <Route path="edit/:slug" element={<CreateArticle />} />
+          <Route path="/Blog" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>
       <div>
