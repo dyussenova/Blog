@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { authFetch } from '../utils/authFetch';
 
 export const fetchList = createAsyncThunk(
   'list/fetchList',
@@ -40,16 +41,12 @@ export const fetchSinglePage = createAsyncThunk(
 
 export const deleteArticle = createAsyncThunk(
   'list/deleteArticle',
-  async function (slug, { rejectWithValue, getState }) {
-    const { token } = getState().login;
+  async function (slug, { rejectWithValue }) {
     try {
-      const response = await fetch(
+      const response = await authFetch(
         `https://blog-platform.kata.academy/api/articles/${slug}`,
         {
           method: 'DELETE',
-          headers: {
-            Authorization: `Token ${token}`,
-          },
         }
       );
 
@@ -67,20 +64,16 @@ export const deleteArticle = createAsyncThunk(
 export const updateArticle = createAsyncThunk(
   'list/updateArticle',
   async function ({ slug, updatedData }, { rejectWithValue, getState }) {
-    const { token } = getState().login;
     const { list } = getState().list;
 
     const oldArticle = list.find((article) => article.slug === slug);
 
     try {
-      const response = await fetch(
+      const response = await authFetch(
         `https://blog-platform.kata.academy/api/articles/${slug}`,
         {
           method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Token ${token}`,
-          },
+
           body: JSON.stringify({ article: updatedData }),
         }
       );
@@ -99,18 +92,12 @@ export const updateArticle = createAsyncThunk(
 );
 export const toggleLike = createAsyncThunk(
   'list/toggleLike',
-  async ({ slug, liked }, { rejectWithValue, getState }) => {
-    const { token } = getState().login;
-
+  async ({ slug, liked }, { rejectWithValue }) => {
     try {
-      const response = await fetch(
+      const response = await authFetch(
         `https://blog-platform.kata.academy/api/articles/${slug}/favorite`,
         {
           method: liked ? 'DELETE' : 'POST',
-          headers: {
-            Authorization: `Token ${token}`,
-            'Content-Type': 'application/json',
-          },
         }
       );
 

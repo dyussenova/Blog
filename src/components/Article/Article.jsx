@@ -18,7 +18,9 @@ function Article() {
   const dispatch = useDispatch();
   const { slug } = useParams();
   const { singlePage, status, error } = useSelector((state) => state.list);
-  const currentUser = useSelector((state) => state.login.user);
+  const currentUser = useSelector(
+    (state) => state.login.user || state.user.user
+  );
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
 

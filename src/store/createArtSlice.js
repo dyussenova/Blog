@@ -1,18 +1,15 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { authFetch } from '../utils/authFetch';
 
 export const createArticle = createAsyncThunk(
   'createart/createArticle',
-  async (articleData, { rejectWithValue, getState }) => {
-    const { token } = getState().login;
+  async (articleData, { rejectWithValue }) => {
     try {
-      const response = await fetch(
+      const response = await authFetch(
         'https://blog-platform.kata.academy/api/articles',
         {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Token ${token}`,
-          },
+
           body: JSON.stringify({
             article: {
               title: articleData.title,
@@ -32,7 +29,6 @@ export const createArticle = createAsyncThunk(
       const data = await response.json();
       return data.article;
     } catch (error) {
-      console.error('Request failed:', error);
       return rejectWithValue({ general: 'Ошибка при создании статьи' });
     }
   }

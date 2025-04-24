@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { updateProfile, resetEditStatus } from '../../store/editSlice';
@@ -8,6 +9,7 @@ import Error from '../../error/error';
 
 function EditProfile() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { user, status, error } = useSelector((state) => state.edit);
 
   const {
@@ -32,8 +34,9 @@ function EditProfile() {
     if (status === 'succeeded') {
       dispatch(setUser(user));
       dispatch(resetEditStatus());
+      navigate('/');
     }
-  }, [status, user, dispatch]);
+  }, [status, user, dispatch, navigate]);
 
   const onSubmit = (data) => {
     dispatch(updateProfile(data));
@@ -143,7 +146,7 @@ function EditProfile() {
           {status === 'loading' ? 'Saving...' : 'Save'}
         </button>
 
-        <Error message={error?.general} />
+        {error?.general && <Error message={error?.general} />}
       </form>
     </div>
   );
