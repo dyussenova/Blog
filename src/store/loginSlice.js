@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { logoutUser } from '../utils/logoutUser';
 
 export const loginUser = createAsyncThunk(
   'login/loginUser',
@@ -45,8 +46,7 @@ const loginSlice = createSlice({
     logout: (state) => {
       state.user = null;
       state.token = null;
-      localStorage.removeItem('login');
-      localStorage.removeItem('token');
+      logoutUser();
     },
     setUser: (state, action) => {
       state.user = action.payload;

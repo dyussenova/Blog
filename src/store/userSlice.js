@@ -1,3 +1,4 @@
+import { logoutUser } from '../utils/logoutUser';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 export const registerUser = createAsyncThunk(
@@ -48,8 +49,7 @@ const userSlice = createSlice({
     logout: (state) => {
       state.user = null;
       state.token = null;
-      localStorage.removeItem('user');
-      localStorage.removeItem('token');
+      logoutUser();
     },
   },
   extraReducers: (builder) => {

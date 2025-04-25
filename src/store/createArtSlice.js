@@ -29,7 +29,10 @@ export const createArticle = createAsyncThunk(
       const data = await response.json();
       return data.article;
     } catch (error) {
-      return rejectWithValue({ general: 'Ошибка при создании статьи' });
+      return rejectWithValue({
+        general: 'Ошибка при создании статьи',
+        details: error.message,
+      });
     }
   }
 );
