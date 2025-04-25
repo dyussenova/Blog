@@ -40,7 +40,7 @@ export const registerUser = createAsyncThunk(
 const userSlice = createSlice({
   name: 'user',
   initialState: {
-    user: JSON.parse(localStorage.getItem('user')) || null,
+    user: JSON.parse(localStorage.getItem('login')) || null,
     token: localStorage.getItem('token') || null,
     status: 'idle',
     error: null,
@@ -61,7 +61,7 @@ const userSlice = createSlice({
         state.status = 'succeeded';
         state.user = action.payload;
         state.token = action.payload.token;
-        localStorage.setItem('user', JSON.stringify(action.payload));
+        localStorage.setItem('login', JSON.stringify(action.payload));
         localStorage.setItem('token', action.payload.token);
         state.error = null;
       })

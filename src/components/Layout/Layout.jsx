@@ -15,11 +15,9 @@ function Layout() {
   const currentUser = loginUser || user;
 
   const handleLogout = () => {
-    if (loginUser) {
-      dispatch(logoutLoginSlice());
-    } else {
-      dispatch(logoutUserSlice());
-    }
+    dispatch(logoutLoginSlice());
+
+    dispatch(logoutUserSlice());
   };
 
   return (
